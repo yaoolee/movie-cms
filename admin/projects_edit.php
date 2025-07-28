@@ -44,7 +44,7 @@ if( isset( $_GET['id'] ) )
 {
   
   $query = 'SELECT *
-    FROM moviess
+    FROM movies
     WHERE id = '.$_GET['id'].'
     LIMIT 1';
   $result = mysqli_query( $connect, $query );
@@ -97,15 +97,15 @@ include( 'includes/header.php' );
     
   <br>
   
-  <label for="releasedate">Release Date:</label>
-  <input type="releasedate" name="releasedate" id="releasedate" value="<?php echo htmlentities( $record['releasedate'] ); ?>">
+  <label for="release_date">Release Date:</label>
+  <input type="date" name="release_date" id="release_date" value="<?php echo htmlentities( $record['release_date'] ); ?>">
     
   <br>
   
   <label for="type">Type:</label>
   <?php
   
-  $values = array( 'Ride Along 2', 'The Boss Baby');
+  $values = array( 'real', 'animated');
   
   echo '<select name="type" id="type">';
   foreach( $values as $key => $value )

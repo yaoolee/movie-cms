@@ -27,7 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `movies` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `id` int(10) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   `title` varchar(100) DEFAULT NULL,
   `runtime` int NOT NULL,
   `lang` varchar(100) NOT NULL,
