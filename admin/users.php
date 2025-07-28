@@ -35,13 +35,13 @@ $result = mysqli_query( $connect, $query );
 
 <table>
   <tr>
-    <th align="center">ID</th>
-    <th align="left">Name</th>
-    <th align="left">Email</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <th align="center">ID</th>
+  <th align="left">Name</th>
+  <th align="left">Email</th>
+  <th align="center">Edit</th>
+  <th align="center">Delete</th>
+  <th align="center">Active</th>
+</tr>
   <?php while( $record = mysqli_fetch_assoc( $result ) ): ?>
     <tr>
       <td align="center"><?php echo $record['id']; ?></td>

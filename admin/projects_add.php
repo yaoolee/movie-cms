@@ -13,18 +13,20 @@ if( isset( $_POST['title'] ) )
   {
     
     $query = 'INSERT INTO movies (
-        title,
-        runtime,
-        release_date,
-        type,
-        lang
-      ) VALUES (
-         "'.mysqli_real_escape_string( $connect, $_POST['title'] ).'",
-         "'.mysqli_real_escape_string( $connect, $_POST['runtime'] ).'",
-         "'.mysqli_real_escape_string( $connect, $_POST['release_date'] ).'",
-         "'.mysqli_real_escape_string( $connect, $_POST['type'] ).'",
-         "'.mysqli_real_escape_string( $connect, $_POST['lang'] ).'"
-      )';
+  title,
+  runtime,
+  release_date,
+  type,
+  lang,
+  director
+) VALUES (
+  "'.mysqli_real_escape_string( $connect, $_POST['title'] ).'",
+  "'.mysqli_real_escape_string( $connect, $_POST['runtime'] ).'",
+  "'.mysqli_real_escape_string( $connect, $_POST['release_date'] ).'",
+  "'.mysqli_real_escape_string( $connect, $_POST['type'] ).'",
+  "'.mysqli_real_escape_string( $connect, $_POST['lang'] ).'",
+  "'.mysqli_real_escape_string( $connect, $_POST['director'] ).'"
+)';
     mysqli_query( $connect, $query );
     
     set_message( 'Movie has been added' );
@@ -50,20 +52,8 @@ include( 'includes/header.php' );
   <br>
   
   <label for="runtime">Run Time:</label>
-  <textarea type="text" name="runtime" id="runtime" rows="10"></textarea>
+  <textarea type="number" name="runtime" id="runtime" rows="10"></textarea>
       
-  <script>
-
-  ClassicEditor
-    .create( document.querySelector( '#runtime' ) )
-    .then( editor => {
-        console.log( editor );
-    } )
-    .catch( error => {
-        console.error( error );
-    } );
-    
-  </script>
   
   <br>
   
@@ -72,15 +62,15 @@ include( 'includes/header.php' );
   
   <br>
   
-  <label for="releasedate">Release Date:</label>
-  <input type="releasedate" name="releasedate" id="releasedate">
+  <label for="release_date">Release Date:</label>
+  <input type="date" name="release_date" id="release_date">
   
   <br>
   
   <label for="type">Type:</label>
   <?php
   
-  $values = array( 'Ride Along 2', 'The Boss Baby' );
+  $values = array( 'real', 'animate' );
   
   echo '<select name="type" id="type">';
   foreach( $values as $key => $value )
@@ -93,6 +83,11 @@ include( 'includes/header.php' );
   ?>
   
   <br>
+
+  <label for="director">Director:</label>
+  <input type="text" name="director" id="director" required>
+
+
   
   <input type="submit" value="Add Movie">
   

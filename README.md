@@ -56,3 +56,10 @@ A simple PHP + MySQL based CMS for managing a movie database.
 ## 🌐 Deployment
 
 The final project will be deployed on InfinityFree (free PHP hosting).
+
+## 🌐 Team Member
+- Qianyi Dong
+- Pallavi Dhawan
+- Yao Tiem Lee
+- Alyssa Austin
+- Anjaney Athikavil Binoj
