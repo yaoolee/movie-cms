@@ -17,20 +17,20 @@ if( !isset( $_GET['id'] ) )
 if( isset( $_POST['title'] ) )
 {
   
-  if( $_POST['title'] and $_POST['content'] )
+  if( $_POST['title'] and $_POST['runtime'] )
   {
     
-    $query = 'UPDATE projects SET
+    $query = 'UPDATE movies SET
       title = "'.mysqli_real_escape_string( $connect, $_POST['title'] ).'",
-      content = "'.mysqli_real_escape_string( $connect, $_POST['content'] ).'",
-      date = "'.mysqli_real_escape_string( $connect, $_POST['date'] ).'",
+      runtime = "'.mysqli_real_escape_string( $connect, $_POST['runtime'] ).'",
+      release_date = "'.mysqli_real_escape_string( $connect, $_POST['release_date'] ).'",
       type = "'.mysqli_real_escape_string( $connect, $_POST['type'] ).'",
-      url = "'.mysqli_real_escape_string( $connect, $_POST['url'] ).'"
+      lang = "'.mysqli_real_escape_string( $connect, $_POST['lang'] ).'"
       WHERE id = '.$_GET['id'].'
       LIMIT 1';
     mysqli_query( $connect, $query );
     
-    set_message( 'Project has been updated' );
+    set_message( 'Movie has been updated' );
     
   }
 
@@ -44,7 +44,7 @@ if( isset( $_GET['id'] ) )
 {
   
   $query = 'SELECT *
-    FROM projects
+    FROM moviess
     WHERE id = '.$_GET['id'].'
     LIMIT 1';
   $result = mysqli_query( $connect, $query );
@@ -65,7 +65,7 @@ include( 'includes/header.php' );
 
 ?>
 
-<h2>Edit Project</h2>
+<h2>Edit Movie</h2>
 
 <form method="post">
   
@@ -74,13 +74,13 @@ include( 'includes/header.php' );
     
   <br>
   
-  <label for="content">Content:</label>
-  <textarea type="text" name="content" id="content" rows="5"><?php echo htmlentities( $record['content'] ); ?></textarea>
+  <label for="runtime">Run Time:</label>
+  <textarea type="text" name="runtime" id="runtime" rows="5"><?php echo htmlentities( $record['runtime'] ); ?></textarea>
   
   <script>
 
   ClassicEditor
-    .create( document.querySelector( '#content' ) )
+    .create( document.querySelector( '#runtime' ) )
     .then( editor => {
         console.log( editor );
     } )
@@ -92,20 +92,20 @@ include( 'includes/header.php' );
   
   <br>
   
-  <label for="url">URL:</label>
-  <input type="text" name="url" id="url" value="<?php echo htmlentities( $record['url'] ); ?>">
+  <label for="lang">Language:</label>
+  <input type="text" name="lang" id="lang" value="<?php echo htmlentities( $record['lang'] ); ?>">
     
   <br>
   
-  <label for="date">Date:</label>
-  <input type="date" name="date" id="date" value="<?php echo htmlentities( $record['date'] ); ?>">
+  <label for="releasedate">Release Date:</label>
+  <input type="releasedate" name="releasedate" id="releasedate" value="<?php echo htmlentities( $record['releasedate'] ); ?>">
     
   <br>
   
   <label for="type">Type:</label>
   <?php
   
-  $values = array( 'Website', 'Graphic Design' );
+  $values = array( 'Ride Along 2', 'The Boss Baby');
   
   echo '<select name="type" id="type">';
   foreach( $values as $key => $value )
@@ -120,11 +120,11 @@ include( 'includes/header.php' );
   
   <br>
   
-  <input type="submit" value="Edit Project">
+  <input type="submit" value="Edit Movie">
   
 </form>
 
-<p><a href="projects.php"><i class="fas fa-arrow-circle-left"></i> Return to Project List</a></p>
+<p><a href="projects.php"><i class="fas fa-arrow-circle-left"></i> Return to Movie List</a></p>
 
 
 <?php

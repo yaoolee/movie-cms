@@ -9,25 +9,25 @@ secure();
 if( isset( $_POST['title'] ) )
 {
   
-  if( $_POST['title'] and $_POST['content'] )
+  if( $_POST['title'] and $_POST['runtime'] )
   {
     
-    $query = 'INSERT INTO projects (
+    $query = 'INSERT INTO movies (
         title,
-        content,
-        date,
+        runtime,
+        release_date,
         type,
-        url
+        lang
       ) VALUES (
          "'.mysqli_real_escape_string( $connect, $_POST['title'] ).'",
-         "'.mysqli_real_escape_string( $connect, $_POST['content'] ).'",
-         "'.mysqli_real_escape_string( $connect, $_POST['date'] ).'",
+         "'.mysqli_real_escape_string( $connect, $_POST['runtime'] ).'",
+         "'.mysqli_real_escape_string( $connect, $_POST['release_date'] ).'",
          "'.mysqli_real_escape_string( $connect, $_POST['type'] ).'",
-         "'.mysqli_real_escape_string( $connect, $_POST['url'] ).'"
+         "'.mysqli_real_escape_string( $connect, $_POST['lang'] ).'"
       )';
     mysqli_query( $connect, $query );
     
-    set_message( 'Project has been added' );
+    set_message( 'Movie has been added' );
     
   }
   
@@ -40,7 +40,7 @@ include( 'includes/header.php' );
 
 ?>
 
-<h2>Add Project</h2>
+<h2>Add Movie</h2>
 
 <form method="post">
   
@@ -49,13 +49,13 @@ include( 'includes/header.php' );
     
   <br>
   
-  <label for="content">Content:</label>
-  <textarea type="text" name="content" id="content" rows="10"></textarea>
+  <label for="runtime">Run Time:</label>
+  <textarea type="text" name="runtime" id="runtime" rows="10"></textarea>
       
   <script>
 
   ClassicEditor
-    .create( document.querySelector( '#content' ) )
+    .create( document.querySelector( '#runtime' ) )
     .then( editor => {
         console.log( editor );
     } )
@@ -67,20 +67,20 @@ include( 'includes/header.php' );
   
   <br>
   
-  <label for="url">URL:</label>
-  <input type="text" name="url" id="url">
+  <label for="lang">Language:</label>
+  <input type="text" name="lang" id="lang">
   
   <br>
   
-  <label for="date">Date:</label>
-  <input type="date" name="date" id="date">
+  <label for="releasedate">Release Date:</label>
+  <input type="releasedate" name="releasedate" id="releasedate">
   
   <br>
   
   <label for="type">Type:</label>
   <?php
   
-  $values = array( 'Website', 'Graphic Design' );
+  $values = array( 'Ride Along 2', 'The Boss Baby' );
   
   echo '<select name="type" id="type">';
   foreach( $values as $key => $value )
@@ -94,11 +94,11 @@ include( 'includes/header.php' );
   
   <br>
   
-  <input type="submit" value="Add Project">
+  <input type="submit" value="Add Movie">
   
 </form>
 
-<p><a href="projects.php"><i class="fas fa-arrow-circle-left"></i> Return to Project List</a></p>
+<p><a href="projects.php"><i class="fas fa-arrow-circle-left"></i> Return to Movie List</a></p>
 
 
 <?php
