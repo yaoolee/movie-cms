@@ -16,8 +16,8 @@ A simple PHP + MySQL based CMS for managing a movie database.
 
 ## 🛠️ Technologies
 
-- PHP (Vanilla)
-- MySQL (with phpMyAdmin or CLI)
+- PHP 
+- MySQL (with phpMyAdmin)
 - MAMP (local testing)
 - Git / GitHub for version control
 - InfinityFree (final deployment)
