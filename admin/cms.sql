@@ -61,3 +61,30 @@ INSERT INTO movies (title, runtime, lang, type, release_date, director) VALUES (
 INSERT INTO movies (title, runtime, lang, type, release_date, director) VALUES ('Quantum Reach', 101, 'English', 'real', '2019-02-17', 'Nancy Wright');
 INSERT INTO movies (title, runtime, lang, type, release_date, director) VALUES ('Collaborative Core', 92, 'Korean', 'animate', '2022-09-03', 'Jin-Woo Park');
 INSERT INTO movies (title, runtime, lang, type, release_date, director) VALUES ('Immersive Loop', 132, 'Spanish', 'real', '2023-03-26', 'Ana Martinez');
+
+
+-- Table structure for table `users`
+
+CREATE TABLE `users` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `first` varchar(25) DEFAULT NULL,
+  `last` varchar(25) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `password` varchar(100) DEFAULT NULL,
+  `active` enum('Yes','No') NOT NULL DEFAULT 'Yes',
+  `dateAdded` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- Dumping data for table `users`
+
+
+INSERT INTO `users` (`id`, `first`, `last`, `email`, `password`, `active`, `dateAdded`) VALUES
+(1, 'Justin', 'Kent', 'jstin009@gmail.com', '5f4dwc3b5aa765d61d8327dqb882cf99', 'Yes', '2025-07-27 11:42:10');
+
+--
+
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+ALTER TABLE `users`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
