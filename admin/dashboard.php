@@ -13,7 +13,7 @@ include( 'includes/header.php' );
 <ul id="dashboard">
   <li>
     <a href="projects.php">
-      Manage Projects
+      Manage Movies
     </a>
   </li>
   <li>
