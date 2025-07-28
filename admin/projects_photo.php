@@ -37,7 +37,7 @@ if( isset( $_FILES['photo'] ) )
           break;      
       }
 
-      $query = 'UPDATE projects SET
+      $query = 'UPDATE movies SET
         photo = "data:image/'.$type.';base64,'.base64_encode( file_get_contents( $_FILES['photo']['tmp_name'] ) ).'"
         WHERE id = '.$_GET['id'].'
         LIMIT 1';
@@ -47,7 +47,7 @@ if( isset( $_FILES['photo'] ) )
     
   }
   
-  set_message( 'Project photo has been updated' );
+  set_message( 'Movie photo has been updated' );
 
   header( 'Location: projects.php' );
   die();
@@ -61,7 +61,7 @@ if( isset( $_GET['id'] ) )
   if( isset( $_GET['delete'] ) )
   {
     
-    $query = 'UPDATE projects SET
+    $query = 'UPDATE movies SET
       photo = ""
       WHERE id = '.$_GET['id'].'
       LIMIT 1';
@@ -75,7 +75,7 @@ if( isset( $_GET['id'] ) )
   }
   
   $query = 'SELECT *
-    FROM projects
+    FROM movies
     WHERE id = '.$_GET['id'].'
     LIMIT 1';
   $result = mysqli_query( $connect, $query );
@@ -98,7 +98,7 @@ include 'includes/wideimage/WideImage.php';
 
 ?>
 
-<h2>Edit Project</h2>
+<h2>Edit Movie</h2>
 
 <p>
   Note: For best results, photos should be approximately 800 x 800 pixels.
@@ -129,7 +129,7 @@ include 'includes/wideimage/WideImage.php';
   
 </form>
 
-<p><a href="projects.php"><i class="fas fa-arrow-circle-left"></i> Return to Project List</a></p>
+<p><a href="projects.php"><i class="fas fa-arrow-circle-left"></i> Return to Movie List</a></p>
 
 
 <?php
